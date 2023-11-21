@@ -32,15 +32,22 @@ export class CanvasComponent implements AfterViewInit {
     this.drawGraph(this.currentR)
 
     this.formDataService.rInput$.subscribe(r => {
-      this.drawGraph(r)
+      this.currentR = r
+      this.drawGraph(this.currentR)
     })
   }
 
   addByClick(event: MouseEvent) {
     const scaledX = this.scaleX(event.x)
     const scaledY = this.scaleY(event.y)
-    console.log(scaledX, scaledY)
 
+    this.formDataService.setValues(scaledX, scaledY, this.currentR)
+    const response =  this.formDataService.submit()
+    if (response) {
+      response.subscribe((resp) => {
+        console.log('Point submitted successfully:', resp);
+      })
+    }
     // todo
   }
 
