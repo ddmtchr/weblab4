@@ -22,13 +22,14 @@ export class MainFormComponent implements OnInit {
   }
 
   submit() {
+    this.formDataService.setValues(this.xInput, this.yInput, this.rInput)
+
     const response =  this.formDataService.submit()
     if (response) {
       response.subscribe((resp) => {
         console.log('Point submitted successfully:', resp);
       })
     }
-
     //todo
   }
 }
