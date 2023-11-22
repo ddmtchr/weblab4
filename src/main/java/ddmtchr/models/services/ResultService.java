@@ -1,14 +1,12 @@
 package ddmtchr.models.services;
 
-import ddmtchr.models.AreaChecker;
 import ddmtchr.models.Result;
 import ddmtchr.models.database.entities.ResultEntity;
 import ddmtchr.models.database.repos.ResultRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+import java.util.List;
 
 @Service
 public class ResultService {
@@ -20,16 +18,13 @@ public class ResultService {
     }
 
     public void addResult(Result result) {
-        ResultEntity entity = new ResultEntity();
-        long startTime = System.nanoTime();
-        entity.setX(result.getX());
-        entity.setY(result.getY());
-        entity.setR(result.getR());
-        entity.setResult(AreaChecker.checkHit(result.getX(), result.getY(), result.getR()));
-        entity.setExecAt(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
-        entity.setExecTime(((System.nanoTime() - startTime) / 1000) / 1000.0);
-
+        ResultEntity entity = new ResultEntity(result);
         resultRepository.save(entity);
+    }
+
+    public List<Result> getAllResults() {
+        List<ResultEntity> entities = resultRepository.findAll();
+        return entities.stream().map(Result::getFromEntity).toList();
     }
 
     public void clearAllResults() {

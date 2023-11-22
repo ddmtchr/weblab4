@@ -3,7 +3,10 @@
 <head>
     <title>Server</title>
 </head>
-<body>
-hello I'm server
+<body style="display: flex;
+      justify-content: center;">
+<div style="text-align: center;">
+    <h2>Server is running</h2>
+</div>
 </body>
 </html>

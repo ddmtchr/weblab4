@@ -1,32 +1,32 @@
-import { Injectable } from '@angular/core';
+import {Injectable, OnInit} from '@angular/core';
 import {Result} from "../models/result";
+import {HttpClient} from "@angular/common/http";
+import {environment} from "../../environments/environment";
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class ResultsService {
-  results: Result[] = [{
-    x: 3.2,
-    y: -2.94,
-    r: 4.5,
-    result: false,
-    execTime: 3,
-    execAt: "20-11-2023 16:16"
-  }, {
-    x: 3.2,
-    y: -2.94,
-    r: 4.5,
-    result: false,
-    execTime: 3,
-    execAt: "20-11-2023 16:16"
-  }, {
-    x: 3.2,
-    y: -2.94,
-    r: 4.5,
-    result: false,
-    execTime: 3,
-    execAt: "20-11-2023 16:16"
-  }]
+    results: Result[] = []
 
-  constructor() { }
+    constructor(private http: HttpClient) {
+        this.getAll()
+    }
+
+    getAll(): void {
+        const response = this.http.get<Result[]>(environment.apiUrl)
+        response.subscribe((resp) => {
+            this.results = resp
+            console.log(resp)
+        })
+    }
+
+    clearAll(): void {
+        const response = this.http.delete(environment.apiUrl)
+        response.subscribe(() => {
+            this.results = []
+            console.log("Clear")
+        })
+    }
+
 }

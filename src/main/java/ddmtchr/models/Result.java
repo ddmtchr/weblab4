@@ -1,5 +1,7 @@
 package ddmtchr.models;
 
+import ddmtchr.models.database.entities.ResultEntity;
+
 public class Result {
     private double x;
     private double y;
@@ -7,6 +9,17 @@ public class Result {
     private boolean result;
     private double execTime;
     private String execAt;
+
+    public static Result getFromEntity(ResultEntity e) {
+        Result res = new Result();
+        res.setX(e.getX());
+        res.setY(e.getY());
+        res.setR(e.getR());
+        res.setResult(e.isResult());
+        res.setExecAt(e.getExecAt());
+        res.setExecTime(e.getExecTime());
+        return res;
+    }
 
     public double getX() {
         return x;

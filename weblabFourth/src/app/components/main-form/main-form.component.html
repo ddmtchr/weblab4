@@ -1,50 +1,52 @@
 <div class="container rounded bg-gray-50 shadow-md">
-  <form class="min-w-fit">
-    <div class="px-4 py-2">
-      <div class="py-2">
-        <p>Select X:</p>
-      </div>
-      <div>
-        <p class="pb-2">{{xInput}}</p>
-        <p-slider [(ngModel)]="xInput" [min]="-3" [max]="5" [step]="0.1" id="x-input" name="x-input"
-                  (onChange)="changeField()">
-        </p-slider>
-      </div>
-    </div>
+    <form class="min-w-fit">
+        <div class="px-4 py-2">
+            <div class="py-2">
+                <p>Select X:</p>
+            </div>
+            <div>
+                <p class="pb-2">{{xInput}}</p>
+                <p-slider [(ngModel)]="xInput" [min]="-3" [max]="5" [step]="0.1" id="x-input" name="x-input"
+                          (onChange)="changeField()">
+                </p-slider>
+            </div>
+        </div>
 
-    <div class="px-4 py-2">
-      <div class="py-2">
-        <p>Select Y:</p>
-      </div>
-      <div>
-        <p class="pb-2">{{yInput}}</p>
-        <p-slider [(ngModel)]="yInput" [min]="-5" [max]="5" [step]="0.1" id="y-input" name="y-input"
-                  (onChange)="changeField()">
-        </p-slider>
-      </div>
-    </div>
+        <div class="px-4 py-2">
+            <div class="py-2">
+                <p>Select Y:</p>
+            </div>
+            <div>
+                <p class="pb-2">{{yInput}}</p>
+                <p-slider [(ngModel)]="yInput" [min]="-5" [max]="5" [step]="0.1" id="y-input" name="y-input"
+                          (onChange)="changeField()">
+                </p-slider>
+            </div>
+        </div>
 
-    <div class="px-4 py-2">
-      <div class="py-2">
-        <p>Select R:</p>
-      </div>
-      <div>
-        <p class="pb-2">{{rInput}}</p>
-        <p-slider [(ngModel)]="rInput" [min]="-3" [max]="5" [step]="0.1" id="r-input" name="r-input"
-                  (onChange)="changeField()">
-        </p-slider>
-        <p class="pt-2 text-red-400 text-center" *ngIf="rInput < 0">Negative radius is not allowed</p>
-      </div>
-    </div>
+        <div class="px-4 py-2">
+            <div class="py-2">
+                <p>Select R:</p>
+            </div>
+            <div>
+                <p class="pb-2">{{rInput}}</p>
+                <p-slider [(ngModel)]="rInput" [min]="-3" [max]="5" [step]="0.1" id="r-input" name="r-input"
+                          (onChange)="changeField()">
+                </p-slider>
+                <p class="pt-2 text-red-400 text-center" *ngIf="rInput < 0">Negative radius is not allowed</p>
+            </div>
+        </div>
 
-    <div class="flex px-2 py-2">
-      <button class="border rounded min-w-fit w-full mx-5 bg-blue-200 px-2 py-2 hover:bg-blue-100 transition"
-              (click)="submit()">Submit
-      </button>
-      <button class="border rounded min-w-fit w-full mx-5 bg-blue-200 px-2 py-2 hover:bg-blue-100 transition">
-        Clear table
-      </button>
-    </div>
+        <div class="flex px-2 py-2">
+            <button class="border rounded min-w-fit w-full mx-5 bg-blue-200 px-2 py-2 hover:bg-blue-100 transition"
+                    (click)="submit()">
+                Submit
+            </button>
+            <button class="border rounded min-w-fit w-full mx-5 bg-blue-200 px-2 py-2 hover:bg-blue-100 transition"
+                    (click)="clear()">
+                Clear table
+            </button>
+        </div>
 
-  </form>
+    </form>
 </div>

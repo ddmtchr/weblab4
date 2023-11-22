@@ -14,7 +14,7 @@ export class FormDataService {
   rInput$ = this.rInput.asObservable()
   negativeR: boolean = this.rInput.getValue() < 0
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   submit(): Observable<Point> | null {
     if (this.negativeR) return null
@@ -23,7 +23,7 @@ export class FormDataService {
       y: this.yInput,
       r: this.rInput.getValue()
     }
-    return this.http.post<Point>(environment.apiUrl + '/check', point)
+    return this.http.post<Point>(environment.apiUrl, point)
     //todo
   }
 
