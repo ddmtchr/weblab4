@@ -1,31 +1,38 @@
 package ddmtchr.models;
 
-public class Point {
-    private double x;
-    private double y;
-    private double r;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotNull;
 
-    public double getX() {
+public class Point {
+    @NotNull
+    private Double x;
+    @NotNull
+    private Double y;
+    @NotNull
+    @Min(0)
+    private Double r;
+
+    public Double getX() {
         return x;
     }
 
-    public void setX(double x) {
+    public void setX(Double x) {
         this.x = x;
     }
 
-    public double getY() {
+    public Double getY() {
         return y;
     }
 
-    public void setY(double y) {
+    public void setY(Double y) {
         this.y = y;
     }
 
-    public double getR() {
+    public Double getR() {
         return r;
     }
 
-    public void setR(double r) {
+    public void setR(Double r) {
         this.r = r;
     }
 

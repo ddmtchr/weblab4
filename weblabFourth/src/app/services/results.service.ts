@@ -17,7 +17,7 @@ export class ResultsService {
         const response = this.http.get<Result[]>(environment.apiUrl)
         response.subscribe((resp) => {
             this.results = resp
-            console.log(resp)
+            console.log(resp) // todo remove
         })
     }
 
@@ -25,7 +25,7 @@ export class ResultsService {
         const response = this.http.delete(environment.apiUrl)
         response.subscribe(() => {
             this.results = []
-            console.log("Clear")
+            console.log("Clear") // todo remove
         })
     }
 

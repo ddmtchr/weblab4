@@ -4,6 +4,7 @@ import ddmtchr.models.AreaChecker;
 import ddmtchr.models.Point;
 import ddmtchr.models.Result;
 import ddmtchr.models.services.ResultService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -23,8 +24,8 @@ public class AreaCheckController {
     }
 
     @PostMapping
-    public ResponseEntity<Point> addResult(@RequestBody Point point) {
-        System.out.println("Received " + point);
+    public ResponseEntity<Point> addResult(@RequestBody @Valid Point point) {
+        System.out.println("Received " + point); //todo remove
         Result result = new Result();
         long startTime = System.nanoTime();
         result.setX(point.getX());

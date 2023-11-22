@@ -29,8 +29,8 @@ export class MainFormComponent implements OnInit {
         const response = this.formDataService.submit()
         if (response) {
             response.subscribe((resp) => {
-                console.log('Point submitted successfully:', resp);
-                this.resultsService.getAll();
+                console.log('Point submitted successfully:', resp) // todo remove
+                this.resultsService.getAll()
 
             })
         }

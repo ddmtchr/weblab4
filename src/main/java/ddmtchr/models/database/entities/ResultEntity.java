@@ -1,7 +1,6 @@
 package ddmtchr.models.database.entities;
 
 import ddmtchr.models.Result;
-import ddmtchr.models.services.ResultService;
 import jakarta.persistence.*;
 
 @Entity
