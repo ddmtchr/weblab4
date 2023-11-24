@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {BehaviorSubject, Observable} from "rxjs";
+import {BehaviorSubject, Observable, of} from "rxjs";
 import {HttpClient} from "@angular/common/http";
 import {Point} from "../models/point";
 import {environment} from "../../environments/environment";
@@ -14,10 +14,22 @@ export class FormDataService {
   rInput$ = this.rInput.asObservable()
   negativeR: boolean = this.rInput.getValue() < 0
 
+  //
+  // xInput$: Observable<number> = of(0)
+  // yInput$: Observable<number> = of(0)
+  // rInput$: Observable<number> = of(3)
+
+
+
+
   constructor(private http: HttpClient) {}
 
   submit(): Observable<Point> | null {
-    if (this.negativeR) return null
+
+    if (this.negativeR) {
+      console.log("R is negative")
+      return null
+    }
     const point: Point = {
       x: this.xInput,
       y: this.yInput,

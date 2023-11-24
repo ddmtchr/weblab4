@@ -1,6 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {FormDataService} from "../../services/form-data.service";
 import {ResultsService} from "../../services/results.service";
+import {DrawingService} from "../../services/drawing.service";
+import {
+    logBuilderStatusWarnings
+} from "@angular-devkit/build-angular/src/builders/browser-esbuild/builder-status-warnings";
 
 @Component({
     selector: 'app-main-form',
@@ -12,11 +16,12 @@ export class MainFormComponent implements OnInit {
     yInput: number = 0;
     rInput: number = 3;
 
-    constructor(private formDataService: FormDataService, private resultsService: ResultsService) {
+    constructor(private formDataService: FormDataService,
+                private resultsService: ResultsService,
+                private drawingService: DrawingService) {
     }
 
     ngOnInit(): void {
-
     }
 
     changeField() {
@@ -30,7 +35,20 @@ export class MainFormComponent implements OnInit {
         if (response) {
             response.subscribe((resp) => {
                 console.log('Point submitted successfully:', resp) // todo remove
-                this.resultsService.getAll()
+                this.resultsService.getAll().subscribe(() => {
+                    this.drawingService.drawGraph()
+
+                    for (const point of this.resultsService.results) {
+                        this.drawingService.drawPoint(point)
+                    }
+                })
+
+                // console.log("Drawing...")
+                // this.drawingService.drawGraph(this.drawingService.currentR)
+                //
+                // for (const point of this.resultsService.results) {
+                //     this.drawingService.drawPoint(point)
+                // }
 
             })
         }
@@ -40,5 +58,6 @@ export class MainFormComponent implements OnInit {
 
     clear() {
         this.resultsService.clearAll()
+        this.drawingService.drawGraph()
     }
 }

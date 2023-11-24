@@ -13,12 +13,13 @@ export class ResultsService {
         this.getAll()
     }
 
-    getAll(): void {
+    getAll() {
         const response = this.http.get<Result[]>(environment.apiUrl)
         response.subscribe((resp) => {
             this.results = resp
-            console.log(resp) // todo remove
+            console.log('Got data') // todo remove
         })
+        return response
     }
 
     clearAll(): void {
