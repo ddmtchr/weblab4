@@ -15,25 +15,25 @@ import {FormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    CanvasComponent,
-    HeaderComponent,
-    MainFormComponent,
-    LoginFormComponent,
-    TableComponent,
-    LoginPageComponent,
-    MainPageComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    SliderModule,
-    FormsModule,
-    HttpClientModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        CanvasComponent,
+        HeaderComponent,
+        MainFormComponent,
+        LoginFormComponent,
+        TableComponent,
+        LoginPageComponent,
+        MainPageComponent
+    ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        SliderModule,
+        FormsModule,
+        HttpClientModule
+    ],
+    providers: [],
+    bootstrap: [AppComponent]
 })
 export class AppModule {
 }

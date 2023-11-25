@@ -1,7 +1,10 @@
-import {Injectable, OnInit} from '@angular/core';
+import {Injectable} from '@angular/core';
 import {Result} from "../models/result";
 import {HttpClient} from "@angular/common/http";
 import {environment} from "../../environments/environment";
+import {Observable} from "rxjs";
+import {Point} from "../models/point";
+import {DrawingService} from "./drawing.service";
 
 @Injectable({
     providedIn: 'root'
@@ -9,15 +12,25 @@ import {environment} from "../../environments/environment";
 export class ResultsService {
     results: Result[] = []
 
-    constructor(private http: HttpClient) {
-        this.getAll()
+    constructor(private http: HttpClient,
+                private drawingService: DrawingService) {
+    }
+
+    handleResponse(response: Observable<Point> | null) {
+        if (response) {
+            response.subscribe((resp) => {
+                this.getAll().subscribe(() => {
+                    this.drawingService.drawGraph()
+                    this.drawingService.drawAllPoints(this.results)
+                })
+            })
+        }
     }
 
     getAll() {
         const response = this.http.get<Result[]>(environment.apiUrl)
         response.subscribe((resp) => {
             this.results = resp
-            console.log('Got data') // todo remove
         })
         return response
     }
@@ -26,8 +39,6 @@ export class ResultsService {
         const response = this.http.delete(environment.apiUrl)
         response.subscribe(() => {
             this.results = []
-            console.log("Clear") // todo remove
         })
     }
-
 }

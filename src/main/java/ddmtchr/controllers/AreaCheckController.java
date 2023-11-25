@@ -25,7 +25,6 @@ public class AreaCheckController {
 
     @PostMapping
     public ResponseEntity<Point> addResult(@RequestBody @Valid Point point) {
-        System.out.println("Received " + point); //todo remove
         Result result = new Result();
         long startTime = System.nanoTime();
         result.setX(point.getX());
@@ -34,7 +33,7 @@ public class AreaCheckController {
         result.setResult(AreaChecker.checkHit(point.getX(), point.getY(), point.getR()));
         result.setExecAt(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
         result.setExecTime(((System.nanoTime() - startTime) / 1000) / 1000.0);
-        resultService.addResult(result); //todo point validation
+        resultService.addResult(result);
         return ResponseEntity.ok(point);
     }
 
@@ -48,5 +47,4 @@ public class AreaCheckController {
         resultService.clearAllResults();
         return ResponseEntity.noContent().build();
     }
-
 }

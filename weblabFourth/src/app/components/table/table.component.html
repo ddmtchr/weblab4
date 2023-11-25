@@ -1,26 +1,27 @@
 <div class="container rounded bg-gray-50 shadow-md">
-  <div class="px-4 py-2">
-    <table class="w-full text-center px-4 py-2">
-      <thead class="font-bold text-gray-800 bg-gray-50">
-      <tr class="border-b-2 border-b-gray-400">
-        <th>Result</th>
-        <th>X</th>
-        <th>Y</th>
-        <th>R</th>
-        <th>Exec time</th>
-        <th>Executed at</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr *ngFor="let result of resultsService.results" class="border-b odd:bg-white even:bg-gray-50">
-        <td>{{result.result ? "Hit" : "Miss"}}</td>
-        <td class="px-2">{{result.x}}</td>
-        <td class="px-2">{{result.y}}</td>
-        <td class="px-2">{{result.r}}</td>
-        <td>{{result.execTime}} ms</td>
-        <td>{{result.execAt}}</td>
-      <tr>
-      </tbody>
-    </table>
-  </div>
+    <div class="px-4 py-2">
+        <table class="w-full text-center px-4 py-2">
+            <thead class="font-bold text-gray-800 bg-gray-50">
+            <tr class="border-b-2 border-b-gray-400">
+                <th>Result</th>
+                <th>X</th>
+                <th>Y</th>
+                <th>R</th>
+                <th>Exec time</th>
+                <th>Executed at</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr *ngFor="let result of resultsService.results" class="border-b odd:bg-white even:bg-gray-50">
+                <td>{{result.result ? "Hit" : "Miss"}}</td>
+                <td class="px-2">{{result.x}}</td>
+                <td class="px-2">{{result.y}}</td>
+                <td class="px-2">{{result.r}}</td>
+                <td>{{result.execTime}} ms</td>
+                <td>{{result.execAt}}</td>
+            <tr>
+            </tbody>
+        </table>
+    </div>
 </div>

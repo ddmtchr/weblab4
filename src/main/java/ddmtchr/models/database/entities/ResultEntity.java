@@ -18,7 +18,8 @@ public class ResultEntity {
     @Column(name = "exec_at")
     private String execAt;
 
-    public ResultEntity() {}
+    public ResultEntity() {
+    }
 
     public ResultEntity(Result result) {
         this.result = result.isResult();

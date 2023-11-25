@@ -6,6 +6,7 @@ import ddmtchr.models.database.repos.ResultRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Comparator;
 import java.util.List;
 
 @Service
@@ -24,7 +25,7 @@ public class ResultService {
 
     public List<Result> getAllResults() {
         List<ResultEntity> entities = resultRepository.findAll();
-        return entities.stream().map(Result::getFromEntity).toList();
+        return entities.stream().map(Result::getFromEntity).sorted(Comparator.comparing(Result::getExecAt)).toList();
     }
 
     public void clearAllResults() {

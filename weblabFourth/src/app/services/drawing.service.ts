@@ -14,7 +14,8 @@ export class DrawingService {
     fullScalePx: number = 0
     canvasFont: string = ''
 
-    constructor() {}
+    constructor() {
+    }
 
     init(c: HTMLCanvasElement): void {
         this.canvas = c
@@ -27,10 +28,15 @@ export class DrawingService {
         this.ctx.scale(1, -1)
     }
 
+    drawAllPoints(results: Result[]) {
+        for (const point of results) {
+            this.drawPoint(point)
+        }
+    }
+
     drawPoint(result: Result): void {
         const scaledX = result.x * this.fullScalePx / this.division
         const scaledY = result.y * this.fullScalePx / this.division
-        // console.log(scaledX, scaledY, hit)
         this.ctx.fillStyle = result.result ? '#080' : '#b00'
         this.ctx.beginPath()
         this.ctx.moveTo(scaledX, scaledY)
@@ -40,7 +46,6 @@ export class DrawingService {
     }
 
     drawGraph() {
-        console.log("Drawing...") // todo remove
         this.ctx.clearRect(-this.halfWidth, -this.halfHeight, this.canvas.width, this.canvas.height)
         this.drawAxis()
         this.drawShapes()
@@ -162,5 +167,4 @@ export class DrawingService {
         const canvasEdgeY = Math.round(this.canvas.getBoundingClientRect().top)
         return +((-(y - canvasEdgeY - this.halfHeight) * this.division / this.fullScalePx).toFixed(2))
     }
-
 }

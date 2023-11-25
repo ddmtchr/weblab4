@@ -1,5 +1,6 @@
 <div class="container rounded bg-gray-50 shadow-md">
     <form class="min-w-fit">
+
         <div class="px-4 py-2">
             <div class="py-2">
                 <p>Select X:</p>
@@ -7,7 +8,7 @@
             <div>
                 <p class="pb-2">{{xInput}}</p>
                 <p-slider [(ngModel)]="xInput" [min]="-3" [max]="5" [step]="0.1" id="x-input" name="x-input"
-                          (onChange)="changeField()">
+                          (onChange)="changeFields()">
                 </p-slider>
             </div>
         </div>
@@ -19,7 +20,7 @@
             <div>
                 <p class="pb-2">{{yInput}}</p>
                 <p-slider [(ngModel)]="yInput" [min]="-5" [max]="5" [step]="0.1" id="y-input" name="y-input"
-                          (onChange)="changeField()">
+                          (onChange)="changeFields()">
                 </p-slider>
             </div>
         </div>
@@ -31,7 +32,7 @@
             <div>
                 <p class="pb-2">{{rInput}}</p>
                 <p-slider [(ngModel)]="rInput" [min]="-3" [max]="5" [step]="0.1" id="r-input" name="r-input"
-                          (onChange)="changeField()">
+                          (onChange)="changeFields()">
                 </p-slider>
                 <p class="pt-2 text-red-400 text-center" *ngIf="rInput < 0">Negative radius is not allowed</p>
             </div>
