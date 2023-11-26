@@ -11,7 +11,7 @@ import java.util.List;
 
 @Service
 public class ResultService {
-    private ResultRepository resultRepository;
+    private final ResultRepository resultRepository;
 
     @Autowired
     public ResultService(ResultRepository resultRepository) {

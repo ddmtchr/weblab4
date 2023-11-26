@@ -18,7 +18,7 @@ export class ResultsService {
 
     handleResponse(response: Observable<Point> | null) {
         if (response) {
-            response.subscribe((resp) => {
+            response.subscribe(() => {
                 this.getAll().subscribe(() => {
                     this.drawingService.drawGraph()
                     this.drawingService.drawAllPoints(this.results)

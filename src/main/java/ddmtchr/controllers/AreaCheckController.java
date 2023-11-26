@@ -16,7 +16,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/points")
 public class AreaCheckController {
-    private ResultService resultService;
+    private final ResultService resultService;
 
     @Autowired
     public AreaCheckController(ResultService resultService) {
