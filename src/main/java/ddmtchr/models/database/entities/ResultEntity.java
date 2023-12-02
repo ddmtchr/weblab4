@@ -32,32 +32,4 @@ public class ResultEntity {
         this.execTime = result.getExecTime();
         this.execAt = result.getExecAt();
     }
-//
-//    public void setId(Long id) {
-//        this.id = id;
-//    }
-//
-//    public void setResult(boolean result) {
-//        this.result = result;
-//    }
-//
-//    public void setX(double x) {
-//        this.x = x;
-//    }
-//
-//    public void setY(double y) {
-//        this.y = y;
-//    }
-//
-//    public void setR(double r) {
-//        this.r = r;
-//    }
-//
-//    public void setExecTime(double execTime) {
-//        this.execTime = execTime;
-//    }
-//
-//    public void setExecAt(String execAt) {
-//        this.execAt = execAt;
-//    }
 }
