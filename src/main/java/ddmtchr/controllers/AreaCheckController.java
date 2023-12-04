@@ -17,14 +17,18 @@ import java.util.List;
 @RequestMapping("/points")
 public class AreaCheckController {
     private final ResultService resultService;
+    private final TokenDecoder td;
 
     @Autowired
-    public AreaCheckController(ResultService resultService) {
+    public AreaCheckController(ResultService resultService, TokenDecoder td) {
         this.resultService = resultService;
+        this.td = td;
     }
 
     @PostMapping
-    public ResponseEntity<Point> addResult(@RequestBody @Valid Point point) {
+    public ResponseEntity<Point> addResult(@RequestBody @Valid Point point,
+                                           @RequestHeader("Authorization") String auth) {
+        String username = td.getUsernameFromAuth(auth);
         Result result = new Result();
         long startTime = System.nanoTime();
         result.setX(point.getX());
@@ -33,18 +37,20 @@ public class AreaCheckController {
         result.setResult(AreaChecker.checkHit(point.getX(), point.getY(), point.getR()));
         result.setExecAt(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
         result.setExecTime(((System.nanoTime() - startTime) / 1000) / 1000.0);
-        resultService.addResult(result);
+        resultService.addResult(result, username);
         return ResponseEntity.ok(point);
     }
 
     @GetMapping
-    public ResponseEntity<List<Result>> getAllResults() {
-        return ResponseEntity.ok(resultService.getAllResults());
+    public ResponseEntity<List<Result>> getAllResults(@RequestHeader("Authorization") String auth) {
+        String username = td.getUsernameFromAuth(auth);
+        return ResponseEntity.ok(resultService.getUserResults(username));
     }
 
     @DeleteMapping
-    public ResponseEntity<?> clearAllResults() {
-        resultService.clearAllResults();
+    public ResponseEntity<?> clearAllResults(@RequestHeader("Authorization") String auth) {
+        String username = td.getUsernameFromAuth(auth);
+        resultService.clearUserResults(username);
         return ResponseEntity.noContent().build();
     }
 }

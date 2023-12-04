@@ -18,17 +18,18 @@ public class ResultService {
         this.resultRepository = resultRepository;
     }
 
-    public void addResult(Result result) {
+    public void addResult(Result result, String username) {
         ResultEntity entity = new ResultEntity(result);
+        entity.setUsername(username);
         resultRepository.save(entity);
     }
 
-    public List<Result> getAllResults() {
-        List<ResultEntity> entities = resultRepository.findAll();
+    public List<Result> getUserResults(String username) {
+        List<ResultEntity> entities = resultRepository.findByUsername(username);
         return entities.stream().map(Result::getFromEntity).sorted(Comparator.comparing(Result::getExecAt)).toList();
     }
 
-    public void clearAllResults() {
-        resultRepository.deleteAll();
+    public void clearUserResults(String username) {
+        resultRepository.deleteByUsername(username);
     }
 }

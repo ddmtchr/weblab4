@@ -23,6 +23,7 @@ public class ResultEntity {
     private double execTime;
     @Column(name = "exec_at")
     private String execAt;
+    private String username;
 
     public ResultEntity(Result result) {
         this.result = result.isResult();
