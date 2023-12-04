@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {KeycloakAngularModule, KeycloakService} from "keycloak-angular";
+import {KeycloakService} from "keycloak-angular";
 
 @Component({
   selector: 'app-root',
