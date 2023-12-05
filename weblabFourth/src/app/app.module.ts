@@ -6,7 +6,6 @@ import {AppComponent} from './app.component';
 import {CanvasComponent} from './components/canvas/canvas.component';
 import {HeaderComponent} from './components/header/header.component';
 import {MainFormComponent} from './components/main-form/main-form.component';
-import {LoginFormComponent} from './components/login-form/login-form.component';
 import {TableComponent} from './components/table/table.component';
 import {MainPageComponent} from './pages/main-page/main-page.component';
 import {SliderModule} from "primeng/slider";
@@ -35,7 +34,6 @@ function initializeKeycloak(keycloak: KeycloakService) {
     CanvasComponent,
     HeaderComponent,
     MainFormComponent,
-    LoginFormComponent,
     TableComponent,
     MainPageComponent
   ],
