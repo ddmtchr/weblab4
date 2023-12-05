@@ -1,9 +1,7 @@
 ## Запуск в Docker
 
 - Запустить Docker Daemon
-- Выполнить команды из корня проекта
-- `mvn clean install`
-- `docker-compose up --build`
+- Выполнить команду `docker-compose up --build` из корня проекта
 - Приложение доступно на `http://localhost:4200/`
 
 ## Задание
@@ -39,4 +37,3 @@
 - Авторизация через Keycloak (от преподавателя)
 
 ![](src/main/resources/areas.jpg)
-
