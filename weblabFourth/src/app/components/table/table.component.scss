@@ -1,19 +1,19 @@
 thead {
-  & th:nth-child(1) {
-    width: 20%;
-  }
+    & th:nth-child(1) {
+        width: 20%;
+    }
 
-  & th:nth-child(2),
-  & th:nth-child(3),
-  & th:nth-child(4) {
-    width: 6%;
-  }
+    & th:nth-child(2),
+    & th:nth-child(3),
+    & th:nth-child(4) {
+        width: 6%;
+    }
 
-  & th:nth-child(5) {
-    width: 20%;
-  }
+    & th:nth-child(5) {
+        width: 20%;
+    }
 
-  & th:nth-child(6) {
-    width: 42%;
-  }
+    & th:nth-child(6) {
+        width: 42%;
+    }
 }

@@ -5,6 +5,7 @@ import ddmtchr.models.database.entities.ResultEntity;
 import ddmtchr.models.database.repos.ResultRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Comparator;
 import java.util.List;
@@ -29,7 +30,8 @@ public class ResultService {
         return entities.stream().map(Result::getFromEntity).sorted(Comparator.comparing(Result::getExecAt)).toList();
     }
 
-    public void clearUserResults(String username) {
-        resultRepository.deleteByUsername(username);
+    @Transactional
+    public long clearUserResults(String username) {
+        return resultRepository.deleteByUsername(username);
     }
 }

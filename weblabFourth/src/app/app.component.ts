@@ -16,16 +16,10 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.keycloakService.isLoggedIn().then((logged) => {
       if (logged) {
-        console.log('logged in')
         if (window.location.pathname !== '/main') window.location.pathname = '/main'
-
-        this.keycloakService.loadUserProfile().then((profile) => {
-          console.log(profile.username)
+        this.keycloakService.loadUserProfile().then(() => {
         })
-      } else {
-        console.log('not logged in')
       }
     })
   }
-
 }
