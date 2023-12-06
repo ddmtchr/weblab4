@@ -3,6 +3,7 @@ package ddmtchr.controllers;
 import ddmtchr.models.AreaChecker;
 import ddmtchr.models.Point;
 import ddmtchr.models.Result;
+import ddmtchr.models.ResultMapper;
 import ddmtchr.models.services.ResultService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,11 +30,9 @@ public class AreaCheckController {
     public ResponseEntity<Point> addResult(@RequestBody @Valid Point point,
                                            @RequestHeader("Authorization") String auth) {
         String username = td.getUsernameFromAuth(auth);
-        Result result = new Result();
+        Result result = ResultMapper.instance.pointToResult(point);
+
         long startTime = System.nanoTime();
-        result.setX(point.getX());
-        result.setY(point.getY());
-        result.setR(point.getR());
         result.setResult(AreaChecker.checkHit(point.getX(), point.getY(), point.getR()));
         result.setExecAt(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
         result.setExecTime(((System.nanoTime() - startTime) / 1000) / 1000.0);
